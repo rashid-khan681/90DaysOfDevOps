@@ -21,47 +21,48 @@ Whenever a server issues an alert, I follow this 4-step triage methodology:
 ### A. Check RAM Usage
 ```bash
 free -h -t
+```
 
 ### B. Check Disk Space
 ```bash
 df -h
+```
 
 ### C. Check System Load
 ```bash
 uptime
+```
 
 ## 2. Process Identification & Management
 
 ### A. Find Top CPU Consuming Processes
 ```bash
 ps aux --sort=-%cpu | head -n 10
-
+```
 ### B. Find Top RAM Consuming Processes
 ```bash
 ps aux --sort=-%mem | head -n 10
-
+```
 ### C. Kill Unresponsive Processes
 ```bash
 pgrep -fl nginx
 kill 15 <PID>
 kill -9 <PID>
-
+```
 ## 3. Network & Port Diagnostics
-
-### Check Open Listening Ports
-```bash
-sudo ss -tulpn | grep LISTEN
 
 ### A. Check Open Listening Ports
 ```bash
 sudo ss -tulpn | grep LISTEN
+```
 
 ## 4. Service Lifecycle & Log Inspection
 
 ### A. Check Service Status
 ```bash
 sudo systemctl status nginx
-
+```
 ### B. View Live Logs for Troubleshooting
 ```bash
 sudo journalctl -u nginx -n 50 --no-pager
+```
